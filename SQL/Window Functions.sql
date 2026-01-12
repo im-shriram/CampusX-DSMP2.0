@@ -41,14 +41,20 @@ MAX(marks) OVER(PARTITION BY branch) AS "Highest Marks"
 FROM marks;
 
 -- Find all the students who have marks higher then the avg of there respective branch
+-- Using Correlated Subquery
+SELECT name, marks
+FROM marks AS T1
+WHERE marks > (SELECT AVG(marks) FROM marks AS T2 WHERE T1.branch = T2.branch);
+
 -- Using CTE
 WITH T AS (
-SELECT name, branch, marks,
-AVG(marks) OVER(PARTITION BY branch) AS "avg_marks"
-FROM marks
+	SELECT name, branch, marks,
+	AVG(marks) OVER(PARTITION BY branch) AS "avg_marks"
+	FROM marks
 )
 SELECT * FROM T
 WHERE T.marks > T.avg_marks;
+
 -- Using Subquery
 SELECT * FROM (SELECT name, branch, marks, AVG(marks) OVER(PARTITION BY branch) AS "avg_marks" FROM marks) AS T
 WHERE T.marks > T.avg_marks;
@@ -59,10 +65,11 @@ WHERE T.marks > T.avg_marks;
 -- DENSE_RANK(): Ranks without gaps for ties (e.g., 1, 1, 2).
 -- NTILE(n): Splits rows into n groups (e.g., quartiles).
 
+-- Why every record appearing 2 times --
 SELECT *,
 RANK() OVER(PARTITION BY branch ORDER BY marks) AS "rank", -- RANK() works over ORDER BY clause, if you cannot provide it then all the rows will be assigned to rank = 1
 DENSE_RANK() OVER(PARTITION BY branch ORDER BY marks) AS "dense rank", -- DENSE_RANK() works over ORDER BY clause, if you cannot provide it then all the rows will be assigned to rank = 1
-ROW_NUMBER() OVER(PARTITION BY branch) AS "row num",
+ROW_NUMBER() OVER(PARTITION BY branch) AS "row num", -- default ascending order (check)
 NTILE(3) OVER(PARTITION BY branch) AS "tile"
 FROM marks;
 -- If you provide ORDER BY clause in atleast any of the OVER clause then all the window functions work accordingly. Just like in the case of ROW_NUMBER
@@ -135,11 +142,11 @@ FROM db.marks;
 -- Calculating a pie chart
 -- Using CLT
 WITH T AS (
-	SELECT branch, SUM(marks) as "branch_marks"
+	SELECT branch, COUNT(branch) as "branch_count"
 	FROM marks
     GROUP BY branch
 )
-SELECT branch, branch_marks * 100 / SUM(branch_marks) OVER() AS "percantage" FROM T;
+SELECT branch, branch_count * 100 / SUM(branch_count) OVER() AS "percantage" FROM T;
 
 -- Simple Subquery
 SELECT branch, SUM(marks) * 100 / (SELECT SUM(marks) FROM marks) AS "percentage_marks"
@@ -154,7 +161,7 @@ GROUP BY T.branch;
 
 -- Calculating The Change in Views on Quarterly bases
 SELECT YEAR(Date), QUARTER(Date), SUM(views) AS 'views',
-((SUM(views) - LAG(SUM(views)) OVER(ORDER BY YEAR(Date),QUARTER(Date)))/LAG(SUM(views)) OVER(ORDER BY YEAR(Date),QUARTER(Date)))*100 AS 'Percent_change'
+((SUM(views) - LAG(SUM(views)) OVER(ORDER BY YEAR(Date), QUARTER(Date))) / LAG(SUM(views)) OVER(ORDER BY YEAR(Date), QUARTER(Date))) * 100 AS 'Percent_change'
 FROM youtube_views
 GROUP BY YEAR(Date), QUARTER(Date)
 ORDER BY YEAR(Date), QUARTER(Date);
