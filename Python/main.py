@@ -1,3 +1,9 @@
+# Error or not
+l = [1,2,3,4,5]
+for i in l:
+    print(i)
+    l.pop()
+
 def man():
     return ("""
     1. Add a new student
