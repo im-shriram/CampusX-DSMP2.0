@@ -1,7 +1,7 @@
-CREATE DATABASE db;
+CREATE DATABASE IF NOT EXISTS db;
 USE db;
 
-CREATE TABLE marks(
+CREATE TABLE IF NOT EXISTS marks(
 	name VARCHAR(255),
     branch VARCHAR(255),
     marks INT
@@ -26,6 +26,7 @@ INSERT INTO marks (name,branch,marks) VALUES
 ('Gautam','MECH',51);
 
 SELECT * FROM marks;
+
 -- ----------------------------------------------------------------------------------------------------------------
 
 -- OVER Clause
@@ -41,6 +42,7 @@ MAX(marks) OVER(PARTITION BY branch) AS "Highest Marks"
 FROM marks;
 
 -- Find all the students who have marks higher then the avg of there respective branch
+
 -- Using Correlated Subquery
 SELECT name, marks
 FROM marks AS T1
@@ -57,7 +59,8 @@ WHERE T.marks > T.avg_marks;
 
 -- Using Subquery
 SELECT * FROM (SELECT name, branch, marks, AVG(marks) OVER(PARTITION BY branch) AS "avg_marks" FROM marks) AS T
-WHERE T.marks > T.avg_marks;
+WHERE T.marks > T.avg_marks; -- NOTE: Since you are compairing between two tables. Each record in 1st table gets compaired with every record of 2nd table
+
 -- ----------------------------------------------------------------------------------------------------------------
 
 -- ROW_NUMBER(): Unique sequential integer (1, 2, 3...) per partition.
@@ -65,7 +68,6 @@ WHERE T.marks > T.avg_marks;
 -- DENSE_RANK(): Ranks without gaps for ties (e.g., 1, 1, 2).
 -- NTILE(n): Splits rows into n groups (e.g., quartiles).
 
--- Why every record appearing 2 times --
 SELECT *,
 RANK() OVER(PARTITION BY branch ORDER BY marks) AS "rank", -- RANK() works over ORDER BY clause, if you cannot provide it then all the rows will be assigned to rank = 1
 DENSE_RANK() OVER(PARTITION BY branch ORDER BY marks) AS "dense rank", -- DENSE_RANK() works over ORDER BY clause, if you cannot provide it then all the rows will be assigned to rank = 1
@@ -87,9 +89,16 @@ WHERE ranked_user < 3;
 
 -- FIRST_VALUE(column): First row in the partition.
 -- LAST_VALUE(column): Last row in the partition.
--- NTH_VALUE(column): Nth row in the partition.
+-- NTH_VALUE(column): Nth row in the partition. and not from that row
 
 -- Find the student who got highest marks in there respective branch
+SELECT DISTINCT highest, branch FROM (
+	SELECT *,
+	FIRST_VALUE(name) OVER(PARTITION BY branch ORDER BY marks DESC) AS highest
+	FROM marks
+) AS T;
+
+-- Use cases
 SELECT *,
 FIRST_VALUE(name) OVER(PARTITION BY branch ORDER BY marks DESC) AS "Topper",
 LAST_VALUE(name) OVER(PARTITION BY branch ORDER BY marks DESC ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS "Back Bencher", -- Frames
@@ -99,6 +108,7 @@ FROM marks;
 
 -- LEAD(column, offset): Access a subsequent row.
 -- LAG(column, offset): Access a preceding row
+-- Starts counting from the row next/previous to the current row
 
 SELECT *,
 LEAD(name, 2) OVER(PARTITION BY branch),
@@ -107,10 +117,11 @@ FROM marks;
 -- ----------------------------------------------------------------------------------------------------------------
 
 -- Concept of Frames
+-- Current Row always the part of window
 SELECT *,
 AVG(marks) OVER(PARTITION BY branch ORDER BY marks ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS "avg_marks"
 FROM marks;
--- ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW - default behavior - From start to current row
+-- ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW - default behavior - From start to current row (included)
 
 SELECT *,
 AVG(marks) OVER(PARTITION BY branch ORDER BY marks ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS "avg_marks"
