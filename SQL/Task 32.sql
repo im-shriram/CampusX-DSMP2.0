@@ -33,7 +33,7 @@ SELECT COUNT(PatientID)
 FROM Patients
 WHERE bloodpressure BETWEEN 90 AND 120;
 
--- No of pateint belo 17 years of age having normal blood pressure as per below formula -
+-- No of patient below 17 years of age having normal blood pressure as per below formula -
 -- BP normal range = 80+(age in years × 2) to 100 + (age in years × 2)
 -- Note: Formula taken just for practice, don't take in real sense.
 SELECT COUNT(PatientID)

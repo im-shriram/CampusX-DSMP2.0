@@ -1,6 +1,14 @@
--- Cross Join: It returns all possible combinations of rows from the two tables. This join is basically used when there is no column having same name in the joining tables otherwise it becomes inner join.
-SELECT * FROM customers
-CROSS JOIN orders;
+-- UNRESOLVED QUESTION --
+
+-- 1. `JOIN` without JOIN statment - In below SQL query each id from T1 will be compared with each id in T2 and for each `true` result it will return the id in the table. Am I right?
+	SELECT T1.id
+	FROM T1, T2
+	WHERE T1.id = T2.id;
+-- It takes every row from T1 and every row from T2, forming a Cartesian product (all possible combinations). Then it keeps only the combinations where T1.id = T2.id. For each such matching pair, it returns the id from T1.
+-- Note 1: Duplicates: If T2 has multiple rows with the same id that matches a single T1 row, that T1 id will appear multiple times in the output (once per matching T2 row).
+-- Note 2: Similarly, if T1 has duplicate ids, each will be paired with matching T2 rows, producing even more duplicates.
+
+-- -------------------------------------------------------------------------------------------------------------------------- --
 
 USE db;
 CREATE TABLE customers (
@@ -33,20 +41,32 @@ INSERT INTO orders (customer_id, order_date, total) VALUES
 (3, '2023-03-01', 75.00),
 (4, '2023-04-01', 150.00);
 
+
+-- Cross Join: It returns all possible combinations of rows from the two tables. 
+SELECT count(*) FROM customers
+CROSS JOIN orders;
+-- NOTE: This join is basically used when there is no column having same name in the joining tables otherwise it becomes inner join.
+
+
 -- Inner Join
 SELECT * FROM customers
 INNER JOIN orders
-ON customers.id = orders.customer_id;
+ON customers.id = orders.customer_id; 
+-- NOTE: You cannot just write the name of the column even though the name is same in both the tables. -> Error Code: 1052. Column 'id' in on clause is ambiguous
+
 
 -- Right Join
 SELECT * FROM customers
 RIGHT JOIN orders
-ON customers.id = orders.customer_id;
+ON customers.id = orders.customer_id; 
+-- NOTE: The values corrosponding to the records from right table which is not involved in the group by there values for the features of the left table considered as NULL.
+
 
 -- Left Join
 SELECT * FROM customers
 LEFT JOIN orders
 ON customers.id = orders.customer_id;
+
 
 -- Full Outer Join
 SELECT * FROM customers
@@ -57,6 +77,7 @@ SELECT * FROM customers
 LEFT JOIN orders
 ON customers.id = orders.customer_id;
 
+
 -- SELF Join
 SELECT * FROM customers AS t1
 INNER JOIN customers AS t2
@@ -65,6 +86,8 @@ ON t1.id; -- This is like full self join
 SELECT * FROM customers AS t1
 INNER JOIN customers AS t2
 ON t1.id = t2.id;
+
+-- -------------------------------------------------------------------------------------------------------------------------- --
 
 -- Practice Questions
 -- Query 1: Join multiple tables
@@ -99,6 +122,8 @@ ON USERS.USER_ID = ORDERS.USER_ID
 GROUP BY USERS.USER_ID, USERS.NAME
 ORDER BY CT DESC
 LIMIT 1;
+
+-- -------------------------------------------------------------------------------------------------------------------------- --
 
 -- SET Operations
 -- 1. UNION
