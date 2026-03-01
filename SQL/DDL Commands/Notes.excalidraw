@@ -1,0 +1,51 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "id": "cYFPrQldxxBNo9c4k5lcj",
+      "type": "text",
+      "x": 56.83027430943093,
+      "y": 32.38396780831454,
+      "width": 1870.8656939720015,
+      "height": 438.4729089846875,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a1",
+      "roundness": null,
+      "seed": 30551660,
+      "version": 608,
+      "versionNonce": 1004631532,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1772349938694,
+      "link": null,
+      "locked": false,
+      "text": "Data Defination Language (DDL) Commands\n\n    1. The `COLUMN` keyword is optional in `ALTER` commands.\n    2. You cannot change the datatype from `string to decimal` unless all the values are in integer just like python, but you can\nchange from int to string, infact you can change anything to string\n    3. Difference between trucate and drop and delete from table_name (without where statment) -> drop will removes the entire\ndata with table but truncate will only deletes the data.\n    4. EXISTS Clause : The SQL EXISTS clause is primarily used to filter rows based on the existence of related records in\nanother table or to enforce conditional logic in subqueries. Exists is a clause used with only databases and tables to check\nwhether they exists or not\n    5. If you are using just one table and apply a where clause then is will check the condition for each row, however `if you are\nusing two tables and comparing between them then its like applying a join wrt a perticular condition`.",
+      "fontSize": 29.231527265645834,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Data Defination Language (DDL) Commands\n\n    1. The `COLUMN` keyword is optional in `ALTER` commands.\n    2. You cannot change the datatype from `string to decimal` unless all the values are in integer just like python, but you can change from int to string, infact you can change anything to string\n    3. Difference between trucate and drop and delete from table_name (without where statment) -> drop will removes the entire data with table but truncate will only deletes the data.\n    4. EXISTS Clause : The SQL EXISTS clause is primarily used to filter rows based on the existence of related records in another table or to enforce conditional logic in subqueries. Exists is a clause used with only databases and tables to check whether they exists or not\n    5. If you are using just one table and apply a where clause then is will check the condition for each row, however `if you are using two tables and comparing between them then its like applying a join wrt a perticular condition`.",
+      "autoResize": false,
+      "lineHeight": 1.25
+    }
+  ],
+  "appState": {
+    "gridSize": 20,
+    "gridStep": 5,
+    "gridModeEnabled": false,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}

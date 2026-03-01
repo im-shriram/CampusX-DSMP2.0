@@ -5,7 +5,7 @@ USE db;
 SELECT order_id 
 FROM zomato.orders AS T1
 WHERE EXISTS (
-  SELECT 1 FROM zomatoorder_details AS T2-- Return all the columns
+  SELECT 1 FROM zomatoorder_details AS T2 -- Return all the columns
   WHERE T1.order_id = T2.order_id
 ); -- For each order_id if subquery returns anything then only that order_id will be printed
 
