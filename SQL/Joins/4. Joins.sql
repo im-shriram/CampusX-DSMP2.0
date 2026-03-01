@@ -82,6 +82,7 @@ ON customers.id = orders.customer_id;
 SELECT * FROM customers AS t1
 INNER JOIN customers AS t2
 ON t1.id; -- This is like full self join
+-- NOTE: Since you are using same table to joing you can mention just the column name instead of `ON col_1 = col_2`
 
 SELECT * FROM customers AS t1
 INNER JOIN customers AS t2
