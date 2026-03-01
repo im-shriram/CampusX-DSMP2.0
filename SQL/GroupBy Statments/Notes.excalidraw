@@ -1,0 +1,51 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "id": "uJolV6IOQNu22RD4vmnXM",
+      "type": "text",
+      "x": 161.7733497619629,
+      "y": 106.22390747070312,
+      "width": 1310.07996981576,
+      "height": 481.9385389057179,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "aC",
+      "roundness": null,
+      "seed": 1734178881,
+      "version": 808,
+      "versionNonce": 1785602031,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1772351797356,
+      "link": null,
+      "locked": false,
+      "text": "GROUP BY Statments\n    1. ORDER BY: single column, multiple columns (brand_name ASC, rating DESC)\n\n    2. LIMIT Clause: 3 syntexes\n        a. LIMIT with just one number\n        b. LIMIT with 2 numbers [first number is offset and second number is number of rows]\n        c. LIMIT with OFFSET\n\n    3. NOTE: If you are performing a `GROUP BY` operation over a column which contains `NULL` values then `NULL` is considered as a seperate, stand-\nalone group.\n\n    4. GROUP BY: with more than one columns\n    5. HAVING clause\n\n    6. WHERE fast_charging IS NOT NULL -- WHERE fast_charging != NULL (is wrong querry) \n        This is also the way to remove null values from each column\n\n    → SELECT *, SUM(id) FROM zomato.order_details; -- * expands to all columns from the table (including id, which is already referenced separately). The\naggregate functions (SUM, AVG, etc.) are computed over the entire table as a single group. The nonaggregated columns (like all columns from the table) are not\npart of the GROUP BY clause, and there is no GROUP BY at all.\n-- Error Code: 1140. In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'zomato.order_details.id'; this is\nincompatible with sql_mode=only_full_group_by\n",
+      "fontSize": 16.763079614111927,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "GROUP BY Statments\n    1. ORDER BY: single column, multiple columns (brand_name ASC, rating DESC)\n\n    2. LIMIT Clause: 3 syntexes\n        a. LIMIT with just one number\n        b. LIMIT with 2 numbers [first number is offset and second number is number of rows]\n        c. LIMIT with OFFSET\n\n    3. NOTE: If you are performing a `GROUP BY` operation over a column which contains `NULL` values then `NULL` is considered as a seperate, stand-alone group.\n\n    4. GROUP BY: with more than one columns\n    5. HAVING clause\n\n    6. WHERE fast_charging IS NOT NULL -- WHERE fast_charging != NULL (is wrong querry) \n        This is also the way to remove null values from each column\n\n    → SELECT *, SUM(id) FROM zomato.order_details; -- * expands to all columns from the table (including id, which is already referenced separately). The aggregate functions (SUM, AVG, etc.) are computed over the entire table as a single group. The nonaggregated columns (like all columns from the table) are not part of the GROUP BY clause, and there is no GROUP BY at all.\n-- Error Code: 1140. In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'zomato.order_details.id'; this is incompatible with sql_mode=only_full_group_by\n",
+      "autoResize": false,
+      "lineHeight": 1.25
+    }
+  ],
+  "appState": {
+    "gridSize": 20,
+    "gridStep": 5,
+    "gridModeEnabled": false,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}
