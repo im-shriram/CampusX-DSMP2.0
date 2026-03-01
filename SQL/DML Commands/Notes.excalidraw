@@ -1,0 +1,51 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "id": "LuSZFpXT3322G2ozPeUyR",
+      "type": "text",
+      "x": 304.75348455255687,
+      "y": 191.1371127041903,
+      "width": 1039.8150634765625,
+      "height": 313.3286916053819,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0",
+      "roundness": null,
+      "seed": 1698126852,
+      "version": 420,
+      "versionNonce": 1111396100,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1772350973040,
+      "link": null,
+      "locked": false,
+      "text": "Data Manipulation Language (DML) Commands\n    1. Different ways of insertion\n        - Inserting with specificied columns - If you want to add values only in a specific set of columns then, you need to pass `NULL`\nas a value for other column.\n        - Inserting from another table - Dont write `VALUES`\n        - If you are inserting just one record use `VALUE` otherwise use `VALUES`\n\n    2. The `UPDATE` and `DELETE` commands results reflect over entire dataset if there is no `WHERE` clause.\n\n    3. SELECT is a DQL/DML command\n    \n    4. Creating new column with default values\n        SELECT  *, 'samsung' AS 'phone'\n        FROM table_name;\n\n    → `DEFAULT` and `AUTO INCREMENT` checks ",
+      "fontSize": 15.666434580269096,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Data Manipulation Language (DML) Commands\n    1. Different ways of insertion\n        - Inserting with specificied columns - If you want to add values only in a specific set of columns then, you need to pass `NULL` as a value for other column.\n        - Inserting from another table - Dont write `VALUES`\n        - If you are inserting just one record use `VALUE` otherwise use `VALUES`\n\n    2. The `UPDATE` and `DELETE` commands results reflect over entire dataset if there is no `WHERE` clause.\n\n    3. SELECT is a DQL/DML command\n    \n    4. Creating new column with default values\n        SELECT  *, 'samsung' AS 'phone'\n        FROM table_name;\n\n    → `DEFAULT` and `AUTO INCREMENT` checks ",
+      "autoResize": false,
+      "lineHeight": 1.25
+    }
+  ],
+  "appState": {
+    "gridSize": 20,
+    "gridStep": 5,
+    "gridModeEnabled": false,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}

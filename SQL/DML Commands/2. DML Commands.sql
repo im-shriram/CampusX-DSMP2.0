@@ -14,14 +14,14 @@ VALUES (1, 'jonny', 'IT'), (2, 'DEX', 'CS'), (3, 'SAM', 'MECH');
 -- a. Inserting into All Columns
 CREATE TABLE users (id INT, name VARCHAR(50), age INT);
 INSERT INTO users
-VALUES (1, 'John Doe', 30);
+VALUE (1, 'John Doe', 30); -- If you are inserting just one record use `VALUE` otherwise use `VALUES`
 
 -- b. Inserting into Specific Columns
 CREATE TABLE users (id INT AUTO_INCREMENT, name VARCHAR(50), age INT);
 INSERT INTO users (name, age)
 VALUES ('Jane Doe', 28);
 
--- NOTE: If you want to add values only in a specific set of columns then, you need to pass `NULL` as a value for other column.
+-- NOTE: If you want to add values only in a specific set of columns then, you need to explicitely pass `NULL` as a value for other column.
 
 -- c. Inserting Multiple Rows at Once
 CREATE TABLE customers (name VARCHAR(50), age INT, country VARCHAR(50));
