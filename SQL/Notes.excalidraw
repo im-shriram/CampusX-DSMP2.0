@@ -1,0 +1,51 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "id": "RBzSSBYdtkr7TuMttOa2j",
+      "type": "text",
+      "x": 228.4635314941404,
+      "y": 111.62757873535156,
+      "width": 1312.9582824707034,
+      "height": 204.08538527188583,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0",
+      "roundness": null,
+      "seed": 1207518264,
+      "version": 1079,
+      "versionNonce": 1342987848,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1773037229550,
+      "link": null,
+      "locked": false,
+      "text": "1. Difference between `COUNT(*)`, `COUNT(col_name)` and `COUNT(any_value)`?\n→ `COUNT(*)` counts all the rows doesnt care whether its null or not null\n   `COUNT(col_name)` counts only non-null value from that column\n   `COUNT(any_value)` counts all the rows, same as COUNT(*)\n\n2. `NULL` values\n→ Observations:\n        1. With operators (+, <, !=...): The result would always be `NULL`.\n        2. Sorting: NULL values are treated as the smallest among all types of values so after ascending sorting they would appear at the top.\n        3. GroupBy: NULL values are treated as a separate group and are not included in any group that contains non-NULL values.",
+      "fontSize": 16.326830821750868,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "1. Difference between `COUNT(*)`, `COUNT(col_name)` and `COUNT(any_value)`?\n→ `COUNT(*)` counts all the rows doesnt care whether its null or not null\n   `COUNT(col_name)` counts only non-null value from that column\n   `COUNT(any_value)` counts all the rows, same as COUNT(*)\n\n2. `NULL` values\n→ Observations:\n        1. With operators (+, <, !=...): The result would always be `NULL`.\n        2. Sorting: NULL values are treated as the smallest among all types of values so after ascending sorting they would appear at the top.\n        3. GroupBy: NULL values are treated as a separate group and are not included in any group that contains non-NULL values.",
+      "autoResize": false,
+      "lineHeight": 1.25
+    }
+  ],
+  "appState": {
+    "gridSize": 20,
+    "gridStep": 5,
+    "gridModeEnabled": false,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}
