@@ -90,7 +90,7 @@ WHERE (gross - budget) IN (SELECT MAX(gross - budget) AS profit
 -- 2nd approach - Table Subquerry
 SELECT name, (gross - budget) AS Profit
 FROM joins.movies
-WHERE (year, gross - budget) IN (SELECT year, MAX(gross - budget) AS profit, name
+WHERE (year, gross - budget) IN (SELECT year, MAX(gross - budget) AS profit
 							FROM joins.movies
 							GROUP BY year
 							ORDER BY year ASC);
@@ -99,6 +99,8 @@ WHERE (year, gross - budget) IN (SELECT year, MAX(gross - budget) AS profit, nam
 SELECT *
 FROM joins.movies
 WHERE name IN (SELECT name, gross from joins.movies);
+
+-- NOTE: The columns and its sequence in where clause and subquerry must be same.
 
 
 -- Find the highest rated movie of each genre votes cutoff of 25000

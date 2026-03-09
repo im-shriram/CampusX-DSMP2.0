@@ -9,7 +9,7 @@ WHERE restaurant_rating = ""; -- for null values command `restaurant_rating IS N
 
 -- Replacing null values with empty string
 UPDATE zomato.orders
-SET restaurant_rating = "Null" WHERE restaurant_rating = "";
+SET restaurant_rating = NULL WHERE (restaurant_rating = "" OR restaurant_rating IS NULL);
 SELECT * FROM zomato.orders;
 
 -- Find number of orders placed by each customer
