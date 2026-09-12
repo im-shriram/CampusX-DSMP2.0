@@ -1,6 +1,3 @@
-.gitignore
-.vscode
-Feature Engineering/Feature Encoding/data
-Numpy/Notes.tldr
 *.docx
 *.excalidraw
+*data
